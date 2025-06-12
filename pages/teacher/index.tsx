@@ -25,15 +25,22 @@ export default function Teacher() {
     const requestId = uuidv4()
     data['requestId'] = requestId
     setDisabledSubmit(true)
+    const timer = setTimeout(() => {
+      setDisabledSubmit(false)
+      // redirect if call takes more than 5 seconds
+      router.push(`/teacher/result/${requestId}`)
+    }, 5000)
     await axios
       .post('api/generate/teacher', data)
       .then((response) => {
+        clearTimeout(timer)
         console.info('api response: ', JSON.stringify(response))
       })
       .catch((err) => {
         // TODO: display error message
       })
       .finally(() => {
+        setDisabledSubmit(false)
         router.push(`/teacher/result/${requestId}`)
       })
   }

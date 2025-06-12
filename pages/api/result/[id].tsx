@@ -3,23 +3,23 @@ import cache from '@/src/utils/helpers/cache'
 import { apiResponse, apiStatusCode } from '@/utils/constants/apiResponses'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const { id } = await req.query
-  // if (id && !cache.has(id as string)) {
-  //   // TODO: remove all this garbage! Cost saving during development
-  //   cache.set(id as string, JSON.stringify(sample))
-  // }
+const handler = (req: NextApiRequest, res: NextApiResponse): void => {
+  const { id } = req.query
   switch (req.method) {
     case 'GET':
       if (typeof id === 'string' && cache.has(id)) {
         res.status(apiStatusCode.OK).send({
           message: apiResponse.success,
           data: cache.get(id),
+          code: apiStatusCode.OK,
         })
+        return
       } else {
         res.status(apiStatusCode.NOT_FOUND).send({
           message: apiResponse.not_found,
+          code: apiStatusCode.NOT_FOUND,
         })
+        return
       }
 
     default:
@@ -27,6 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
       res.status(apiStatusCode.BAD_REQUEST).send({
         message: apiResponse.invalid_request,
       })
+      return
   }
 }
 
