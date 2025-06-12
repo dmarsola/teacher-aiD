@@ -29,7 +29,7 @@ export default function Teacher() {
       setDisabledSubmit(false)
       // redirect if call takes more than 5 seconds
       router.push(`/teacher/result/${requestId}`)
-    }, 5000)
+    }, 15000)
     await axios
       .post('api/generate/teacher', data)
       .then((response) => {

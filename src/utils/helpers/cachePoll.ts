@@ -16,7 +16,7 @@ export async function pollForCacheValue(key: string, interval = 1000, maxAttempt
           if (err.status == 404 && ++attempts <= maxAttempts) {
             // keep trying
             setTimeout(poll, interval)
-            interval = Math.floor(interval * 1.15)
+            interval = Math.floor(interval * 2)
           } else {
             reject(new Error('Cannot retrieve lesson plan'))
           }
