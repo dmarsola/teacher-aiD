@@ -1,6 +1,8 @@
 export const apiResponse = {
   invalid_topic: 'Topic is not appropriate. Please try again',
   invalid_request: 'Invalid request',
+  not_found: 'Not found',
+  success: 'Success',
 }
 
 export const apiStatusCode = {
