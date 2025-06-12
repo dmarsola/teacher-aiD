@@ -1,6 +1,5 @@
 // this is a backend cache for the values to be retrieved later
 // the frontend should call the endpoint api/result/[id]
-
 const cache: Map<string, string> = new Map()
 
 export default {

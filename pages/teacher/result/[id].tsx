@@ -3,7 +3,6 @@ import ExportToPDF from '@/src/components/ExportToPDF'
 import { pollForCacheValue } from '@/src/utils/helpers/cachePoll'
 import { LessonOutputData } from '@/src/utils/types/lessonOutputData'
 import { useRouter } from 'next/router'
-import { Card } from 'primereact/card'
 import { ProgressSpinner } from 'primereact/progressspinner'
 import { useEffect, useState } from 'react'
 
@@ -32,11 +31,11 @@ export default function ResultById() {
 
           <div className="mx-5">
             <div className="mb-5">
-              <h1>{`Grade ${lesson.grade} ${lesson.subject} Lesson on ${lesson.topic}`}</h1>
+              <h2>{`Grade ${lesson.grade} ${lesson.subject} Lesson on ${lesson.topic}`}</h2>
               {lesson.lesson.map((lessonItem, lessonIndex) => {
                 return (
-                  <div key={`lessonItem-${lessonIndex}`}>
-                    <h2 key={lessonIndex}>{lessonItem.slide}</h2>
+                  <div key={`lessonItem-${lessonIndex}`} className="keep-together">
+                    <h4 key={lessonIndex}>{lessonItem.slide}</h4>
                     {lessonItem.content.map((c, i) => {
                       return <p key={i}>{c}</p>
                     })}
@@ -45,11 +44,11 @@ export default function ResultById() {
               })}
             </div>
             <div className="page-break mb-5">
-              <h1>Practice Exercises:</h1>
+              <h2>Practice Exercises:</h2>
               {lesson.exercises.map((exerciseItem, exerciseIndex) => {
                 return (
-                  <div key={`exerciseItem-${exerciseIndex}`}>
-                    <h2 key={exerciseIndex}>{`${exerciseIndex + 1}) ${exerciseItem.question}`}</h2>
+                  <div key={`exerciseItem-${exerciseIndex}`} className="keep-together">
+                    <h4 key={exerciseIndex}>{`${exerciseIndex + 1}) ${exerciseItem.question}`}</h4>
                     {exerciseItem.options?.map((c, i) => {
                       return <p key={i}>{`${String.fromCharCode(65 + i)}) ${c}`}</p>
                     })}
@@ -59,7 +58,7 @@ export default function ResultById() {
               })}
             </div>
             <div className="page-break mb-5">
-              <h1>Answer Key:</h1>
+              <h2>Answer Key:</h2>
               {lesson.exercises.map((answerItem, answerIndex) => {
                 return (
                   <div key={`answerItem-${answerIndex}`}>

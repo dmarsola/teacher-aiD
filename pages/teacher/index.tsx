@@ -34,7 +34,7 @@ export default function Teacher() {
         // TODO: display error message
       })
       .finally(() => {
-        router.push(`/result/${requestId}`)
+        router.push(`/teacher/result/${requestId}`)
       })
   }
 

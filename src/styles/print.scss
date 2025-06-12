@@ -13,6 +13,11 @@
     page-break-inside: avoid;
   }
 
+  .keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   body {
     margin: 0;
     padding: 0;

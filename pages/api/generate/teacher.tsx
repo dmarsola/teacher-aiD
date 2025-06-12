@@ -42,11 +42,12 @@ const generateHandler = async (req: NextApiRequest, res: NextApiResponse): Promi
           { headers: requestHeaders }
         )
         .then((response) => {
-          const lessonContent = response.data.choices[0].message.content
+          const lessonContent = JSON.parse(response.data.choices[0].message.content)
           lessonContent['grade'] = requestData.grade
           lessonContent['subject'] = requestData.subject
           lessonContent['topic'] = requestData.topic
-          cache.set(requestData.requestId, response.data.choices[0].message.content)
+          console.info('lessonContent: ', JSON.stringify(lessonContent))
+          cache.set(requestData.requestId, JSON.stringify(lessonContent))
           res.status(apiStatusCode.OK).send({
             message: apiResponse.success,
           })

@@ -5,7 +5,7 @@ export async function pollForCacheValue(key: string, interval = 1000, maxAttempt
 
   return new Promise((resolve, reject) => {
     const poll = async () => {
-      console.info('pollForCacheValue key: ', key, 'interval:', interval, 'attempts', attempts)
+      // console.info('pollForCacheValue key: ', key, 'interval:', interval, 'attempts', attempts)
       try {
         const cacheValue = await axios.get(`/api/result/${encodeURIComponent(key)}`).then((res) => res.data)
 
