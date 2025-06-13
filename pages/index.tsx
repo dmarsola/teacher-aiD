@@ -6,7 +6,7 @@ import { Card } from 'primereact/card'
 export default function Home() {
   return (
     <BaseLayout>
-      <Card className="h-100">
+      <Card className="min-vh-100">
         <div className="container-fluid overflow-hidden text-center pt-5">
           <div className="row g-5">
             <div className="col">

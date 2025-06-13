@@ -30,7 +30,7 @@ export default function ResultById() {
     if (lesson) {
       return (
         <BaseLayout>
-          <Card className="h-100">
+          <Card className="min-vh-100">
             <ExportToPDF />
 
             <div className="mx-5">
@@ -89,7 +89,7 @@ export default function ResultById() {
     <>
       {loading ? (
         <BaseLayout>
-          <Card className="h-100">
+          <Card className="min-vh-100">
             <div className="m-5 text-center">
               <h2>Hold tight! Our digital slaves are making your lesson plan:</h2>
               <p>{id}</p>

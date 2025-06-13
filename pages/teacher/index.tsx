@@ -47,7 +47,7 @@ export default function Teacher() {
 
   return (
     <BaseLayout>
-      <Card className="h-100">
+      <Card className="min-vh-100">
         <form onSubmit={handleSubmit(onSubmit)} className="container mt-4" role="form">
           <div className="mb-3">
             {/* Subject Field */}
